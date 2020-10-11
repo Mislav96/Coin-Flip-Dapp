@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+      body, html {
+        height: =100%;
+      }
+      .spinner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height:60px;
+        width:60px;
+        margin:0px auto;
+        -webkit-animation: rotation .6s infinite linear;
+        -moz-animation: rotation .6s infinite linear;
+        -o-animation: rotation .6s infinite linear;
+        animation: rotation .6s infinite linear;
+        border-left:6px solid rgba(0,174,239,.15);
+        border-right:6px solid rgba(0,174,239,.15);
+        border-bottom:6px solid rgba(0,174,239,.15);
+        border-top:6px solid rgba(0,174,239,.8);
+        border-radius:100%;
+      }
+
+      @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(359deg);}
+      }
+      @-moz-keyframes rotation {
+        from {-moz-transform: rotate(0deg);}
+        to {-moz-transform: rotate(359deg);}
+      }
+      .overlay {
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 100%;
+        height   : 100%;
+        z-index  : 995;
+        visibility: hidden;
+      }
+      .overlay-back {
+        position   : absolute;
+        top        : 0;
+        left       : 0;
+        width      : 100%;
+        height     : 100%;
+        background : #000;
+        opacity    : 0.6;
+        filter     : alpha(opacity=60);
+        z-index    : 990;
+        visibility: hidden;
+      }
+      .dvLoading {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        height: 150px;
+        width: 250px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        margin: -125px 0 0 -125px;
+        text-align: center;
+        visibility: hidden;
+      }
+      #bg1 {
+        /* The image used */
+
+        background-image: linear-gradient(MediumSeaGreen,MediumSeaGreen, white);
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+      }
+      .bg2 {
+        /* The image used */
+        background-color:MediumSeaGreen;
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+
+    <title>Coin flip game</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./web3.min.js"></script>
+    <script type="text/javascript" src="./abi.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+  </head>
+
+  <body id = "bg1">
+    <div class="bg2">
+      <div class="bg2">
+        <h1 class="display-4">Coin Flip Dapp</h1>
+        <p class="lead">Double your money! </p>
+      </div>
+    </div>
+    <div class="overlay-back"></div>
+      <div class="overlay">
+        <div class="dvLoading">
+          <p>Please wait<br>while coin is in the air...</p>
+          <div class="spinner"></div>
+        </div>
+      </div>
+    <div class="container">
+      <div>
+        <h2>Input your betting amount in ETH</h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="amount_input" placeholder="ETH" >
+        </div>
+        <input type="radio" id="head" name="bet" value="head">
+        <label for="head">Heads</label><br>
+        <input type="radio" id="tail" name="bet" value="tail">
+        <label for="tail">Tails</label><br>
+        <button type="button" id="add_amount_button" class="btn btn-primary">BET !</button>
+      </div>
+      <div>
+        <h2>Your last result :</h2>
+        <div>
+          Outcome: <span id="outcome_output">You have not made a bet yet</span>
+        </div>
+        <div>
+          Amount: <span id="amount_output">You have not made a bet yet</span>
+        </div>
+        <div>
+          Block Height: <span id="height_output">You have not made a bet yet</span>
+        </div>
+        <div>
+          Money availabe in dapp: <span id="money_output"></span>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
